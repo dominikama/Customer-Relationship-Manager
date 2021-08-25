@@ -20,6 +20,8 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+
+
     @GetMapping("/list")
     public String getCustomerList(Model model) {
         model.addAttribute("customerList", customerService.getCustomers());
