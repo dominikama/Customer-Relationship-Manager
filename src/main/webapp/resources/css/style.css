@@ -9,6 +9,7 @@ table {
 	border-bottom:1px solid gray;
 	font-family: Tahoma,Verdana,Segoe,sans-serif;
 	width:72%;
+	margin-top:10px;
 }
  
 th {
@@ -42,6 +43,11 @@ tr:nth-child(odd) {background: #BBBBBB}
 	width: 120px; 
 	padding: 5px 10px; 
 	
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	background: #cccccc;
+}
+
+a {
+    text-decoration:none;
+    color: black;
 }

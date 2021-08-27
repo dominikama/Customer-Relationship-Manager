@@ -13,6 +13,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
@@ -25,7 +27,7 @@ import java.util.logging.Logger;
 @ComponentScan(basePackages = "org.example")
 @EnableTransactionManagement
 @PropertySource("classpath:persistence-mysql.properties")
-public class CRMAppConfig {
+public class CRMAppConfig implements WebMvcConfigurer {
 
     //set up a variable to hold the properties
     @Autowired
@@ -65,7 +67,7 @@ public class CRMAppConfig {
         }
 
         //log connection
-        logger.info("jdbc:url="+ env.getProperty("jdbc.url"));
+        logger.info("=======>>> jdbc:url="+ env.getProperty("jdbc.url"));
 
         //set connection props
         securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
@@ -101,7 +103,7 @@ public class CRMAppConfig {
     @Bean
     public LocalSessionFactoryBean sessionFactory(){
 
-        // create session factorys
+        // create session factories
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 
         // set the properties
@@ -122,4 +124,11 @@ public class CRMAppConfig {
 
         return txManager;
     }
+
+    @Override
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+
+
 }

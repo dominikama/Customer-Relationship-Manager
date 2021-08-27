@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,13 @@
     <div id = "container">
         <div id = "content">
 
+             <!-- Add logout button -->
+            <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                <input class="add-button" type="submit" value="Logout"/>
+            </form:form>
+
+             <a href="${pageContext.request.contextPath}/" class="add-button">Back Home</a>
+
             <input type="button" value="Add Customer"
                 onclick="window.location.href='showFormForAdd'; return false;"
                 class="add-button"
@@ -35,7 +43,9 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
                     <th>Action</th>
+                    </security:authorize>
                 </tr>
 
 
@@ -53,13 +63,17 @@
                    <td> ${customer.lastName}</td>
                    <td> ${customer.email}</td>
 
+                <security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
                     <td>
                         <!-- display the update link -->
                         <a href="${updateLink}">Update</a>
+                        <security:authorize access="hasRole('ADMIN')">
                         |
                         <a href="${deleteLink}"
                            onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+                        </security:authorize>
                     </td>
+                </security:authorize>
                 </tr>
                 </c:forEach>
             </table>
