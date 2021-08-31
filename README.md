@@ -1,0 +1,2 @@
+Good management of the customers is crucial. That's why having a clear and simple CRM is so important. This project was designed with the thought of managing customers and employees on a daily basis.
+Access to the customers and employees is limited. An employee can only view customers, and add a new customer. The manager have unlimited access to the customers, can also view employees. The admin have unlimited access to the customers and employees.
