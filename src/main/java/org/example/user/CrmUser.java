@@ -3,6 +3,7 @@ package org.example.user;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.validation.FieldMatch;
 import org.example.validation.ValidEmail;
 import org.example.validation.ValidPassword;
 
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @NoArgsConstructor
+@FieldMatch.List(@FieldMatch(first = "password", second = "matchingPassword", message = "Passwords must match!"))
 public class CrmUser {
 
     @NotNull(message = "is required")

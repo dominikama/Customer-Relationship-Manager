@@ -5,40 +5,63 @@
 <html>
 <head>
     <title>Customer List</title>
-    <link type="text/css"
-    rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+                  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+                  crossorigin="anonymous">
+
+          <style>
+          .card-title {
+          text-align:center;
+
+          }
+
+
+          </style>
 </head>
 <body>
-    <div id="wrapper">
-        <div id = "header">
-            <h2>CRM - Customer Relationship Manager</h2>
-        </div>
-    </div>
 
+    <div class = "container">
+        <h2 class="card-title">CRM - Customer Relationship Manager</h2>
+        <header class="p-3 bg-dark text-white">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-    <div id = "container">
-        <div id = "content">
+                   <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-             <!-- Add logout button -->
-            <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                <input class="add-button" type="submit" value="Logout"/>
-            </form:form>
+                        <li><a href="${pageContext.request.contextPath}/"  class="btn btn-outline-light me-2">Back Home</a></li>
 
-             <a href="${pageContext.request.contextPath}/" class="add-button">Back Home</a>
+                        <li><input type="button" value="Add Customer"
+                            onclick="window.location.href='showFormForAdd'; return false;"
+                             class="btn btn-outline-light me-2"/>
+                         </li>
+                    </ul>
 
-            <input type="button" value="Add Customer"
-                onclick="window.location.href='showFormForAdd'; return false;"
-                class="add-button"
-                />
+                    <!--  add a search box -->
+                    <form:form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="search" method="GET">
+                        <input type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"
+                            name="name" />
+                        <input type="submit" value="Search" class="form-control form-control-dark" />
+                    </form:form>
 
-                <!--  add a search box -->
-            <form:form action="search" method="GET">
-                Search customer: <input type="text" name="name" />
+                    <div class="text-end">
+                        <form:form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input class="btn btn-warning" type="submit" value="Logout"/>
+                        </form:form>
+                    </div>
 
-                <input type="submit" value="Search" class="add-button" />
-            </form:form>
+                </div>
+            </div>
+        </header>
 
-            <table>
+            <br>
+            <br>
+
+            <table border="1" class="table table-bordered table-striped">
+
+                <thead class="table-dark">
                 <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -47,6 +70,7 @@
                     <th>Action</th>
                     </security:authorize>
                 </tr>
+                </thead>
 
 
                 <c:forEach var="customer" items="${customerList}">
@@ -58,6 +82,7 @@
                     <c:param name="customerId" value="${customer.id}"/>
                 </c:url>
 
+                <tbody>
                 <tr>
                    <td> ${customer.firstName}</td>
                    <td> ${customer.lastName}</td>
@@ -66,19 +91,18 @@
                 <security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
                     <td>
                         <!-- display the update link -->
-                        <a href="${updateLink}">Update</a>
-                        <security:authorize access="hasRole('ADMIN')">
-                        |
+                        <a href="${updateLink}" class="btn btn-outline-secondary btn-sm mb-3">Update</a>
+
                         <a href="${deleteLink}"
-                           onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
-                        </security:authorize>
+                           onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false"
+                           class="btn btn-outline-secondary btn-sm mb-3">Delete</a>
+
                     </td>
                 </security:authorize>
                 </tr>
+                </tbody>
                 </c:forEach>
             </table>
-
-        </div>
     </div>
 </body>
 </html>

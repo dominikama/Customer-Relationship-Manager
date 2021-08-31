@@ -26,7 +26,7 @@ public class RegistrationController {
         return "registration-form";
     }
 
-    @PostMapping("processRegistrationForm")
+    @PostMapping("/processRegistrationForm")
     public String processRegistration(@Valid @ModelAttribute("crmUser") CrmUser user,
                                       BindingResult bindingResult, Model model) {
 
@@ -45,7 +45,7 @@ public class RegistrationController {
 
         userService.save(user);
 
-        return "registration-confirmation";
+        return "redirect:/";
     }
 
     @InitBinder

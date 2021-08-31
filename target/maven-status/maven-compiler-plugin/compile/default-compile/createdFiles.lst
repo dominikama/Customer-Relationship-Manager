@@ -1,8 +1,0 @@
-org\example\entity\Customer.class
-org\example\testDb\TestDbServlet.class
-org\example\controller\CustomerController.class
-org\example\service\CustomerService.class
-org\example\dao\CustomerDAOImpl.class
-org\example\service\CustomerServiceImpl.class
-org\example\aspect\CRMLoggingAspect.class
-org\example\dao\CustomerDAO.class

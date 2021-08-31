@@ -23,7 +23,7 @@ public class EmployeesController {
     @GetMapping("/deleteUser")
     public String delete(@RequestParam("userId") int id) {
         service.deleteUser(id);
-        return "redirect:/list";
+        return "redirect:/user/list";
     }
 
 }
