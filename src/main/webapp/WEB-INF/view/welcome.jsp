@@ -7,14 +7,18 @@
           <meta charset="utf-8">
                    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-                         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-                         crossorigin="anonymous">
-                    <link type="text/css"
-                       rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+                   integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+                   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+
                        <style>
                         header {
                             margin-bottom:150px;
+                        }
+                        .dropdown{
+                        margin-right:10px;
                         }
 
                        </style>
@@ -25,10 +29,24 @@
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
+        <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="drop" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                   <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="drop">
+                  <a class="dropdown-item" aria-current="page"
+                                            href="${pageContext.request.contextPath}/customer/list">Customer List</a>
+                  <a class="dropdown-item" aria-current="page"
+                                           href="${pageContext.request.contextPath}/user/list">Employee List</a>
+                  <a class="dropdown-item" aria-current="page"
+                                             href="${pageContext.request.contextPath}/loginPage">Log in</a>
+                 <a class="dropdown-item" aria-current="page"
+                                         href="${pageContext.request.contextPath}/register/registrationForm">Register</a>
+                </div>
+          </div>
           <a class="navbar-brand" href="#">CRM</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-            </button>
+
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
@@ -70,7 +88,7 @@
 
                 <h2>Employee</h2>
                 <p>As an employee, you have limited access to our clients and none access to other employees.
-                If you want to test this role sing in or use:<br>
+                If you want to test this role register or use:<br>
                 username:"john", password:"fun123" to log in </p>
               </div><!-- /.col-lg-4 -->
               <div class="col-lg-4">
@@ -101,6 +119,8 @@
                 </p>
               </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
+
+
 
 
             <!-- START THE FEATURETTES -->
@@ -177,6 +197,8 @@
 
           <div>
         </main>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>
