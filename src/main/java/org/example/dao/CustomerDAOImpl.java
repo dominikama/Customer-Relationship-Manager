@@ -62,7 +62,6 @@ public class CustomerDAOImpl implements CustomerDAO {
             theQuery.setParameter("theName", "%" + name.toLowerCase() + "%");
         }
         else {
-            // theSearchName is empty ... so just get all customers
             theQuery = currentSession.createQuery("from Customer", Customer.class);
         }
 

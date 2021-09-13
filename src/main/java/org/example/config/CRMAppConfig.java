@@ -59,7 +59,7 @@ public class CRMAppConfig implements WebMvcConfigurer {
         ComboPooledDataSource securityDataSource =
                 new ComboPooledDataSource();
 
-        //set hdbc driver
+        //set jdbc driver
         try {
             securityDataSource.setDriverClass(env.getProperty("jdbc.driver"));
         } catch (PropertyVetoException e) {
